@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+CONFIG_FILE="$(snapctl get config)"
+
+if [ -n "${CONFIG_FILE}" ]; then
+    if ! [[ -r "${CONFIG_FILE}" && -f "${CONFIG_FILE}" ]]; then
+        >&2 echo "'$CONFIG_FILE' is not a supported value for config."
+        logger -t ${SNAP_NAME} "'$CONFIG_FILE' is not a supported value for config."
+        exit 1
+    fi
+fi
