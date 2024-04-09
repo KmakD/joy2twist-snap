@@ -17,7 +17,7 @@ version: "0.0.1"
 
 apps:
   joy2twist:
-    command: usr/bin/panther_can_setup.sh
+    command: usr/bin/launcher.sh
     plugs: [network, network-bind, joystick]
     daemon: simple
     install-mode: disable
