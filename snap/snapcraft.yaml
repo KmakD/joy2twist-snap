@@ -10,7 +10,7 @@ confinement: devmode
 base: core22
 
 architectures:
-  - build-on: arm64
+  - build-on: amd64
 
 # Later to be parsed from git repo
 version: "0.0.1"
@@ -28,14 +28,15 @@ parts:
     plugin: colcon
     source: https://github.com/husarion/joy2twist.git
     source-branch: ros2
-    stage-packages: 
+    build-packages:
+      - ros-humble-ament-lint-auto
+    stage-packages:
       - ros-humble-ros2launch
       - ros-humble-rmw-cyclonedds-cpp
-  
+
   # copy local scripts to the snap usr/bin
   local-files:
     plugin: dump
     source: snap/local/
     organize:
-      panther_config.env: usr/bin/panther_config.env
       "*.sh": usr/bin/
