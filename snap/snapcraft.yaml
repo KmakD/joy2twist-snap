@@ -10,7 +10,7 @@ confinement: devmode
 base: core22
 
 architectures:
-  - build-on: amd64
+  - build-on: arm64
 
 # Later to be parsed from git repo
 version: "0.0.1"
