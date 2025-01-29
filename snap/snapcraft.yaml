@@ -14,17 +14,20 @@ architectures:
   - build-on: amd64
 
 # Later to be parsed from git repo
-version: "0.0.1"
+version: "0.0.2"
 
 apps:
-  joy2twist:
+  joy2twist: &joy2twist
     command: usr/bin/launcher.sh
     plugs: [network, network-bind, joystick]
-    daemon: simple
-    install-mode: disable
     environment:
       RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
     extensions: [ros2-humble]
+
+  daemon:
+    <<: *joy2twist
+    daemon: simple
+    install-mode: disable
 
 parts:
   joy2twist:
